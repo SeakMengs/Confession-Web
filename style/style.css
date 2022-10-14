@@ -167,4 +167,7 @@ nav {
     body {
         background: #D2D2D2;
     }
+    .post-box {
+        width: 95%;
+    }
 }
