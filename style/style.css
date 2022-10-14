@@ -93,6 +93,19 @@ nav {
     -o-border-radius: 20px;
 }
 
+.post-write {
+    width: 80%;
+    height: auto;
+    margin: 25px auto;
+    background: #D9D9D9;
+    padding: 20px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
 .profile {
     display: flex;
     align-items: center;
@@ -115,8 +128,25 @@ nav {
     padding: 10px 5px 5px 5px;
 }
 
+.write-content {
+    padding: 25px 5px 5px 5px;
+    width: 100%;
+}
+
 .post-text {
     width: 100%;
+}
+
+.text-box {
+    width: 100%;
+    outline: none;
+    border: none;
+    background:#D9D9D9;
+    resize: none;
+    font-size: 16px;
+}
+.text-box::-webkit-scrollbar {
+    display: none;
 }
 
 .post-image {
@@ -175,6 +205,9 @@ nav {
     .post-box {
         width: 95%;
     }
+    .post-write {
+        width: 95%;
+    }
 }
 
 @media only screen and (max-width: 450px) {
@@ -186,6 +219,9 @@ nav {
         width: 20px;
     }
     .post-text {
+        font-size: 12px;
+    }
+    .text-box {
         font-size: 12px;
     }
     .imposter {

@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
+    <script src="./script/confession.js" defer></script>
 </head>
 
 <body>
@@ -32,7 +33,19 @@
                 <img src="./asset/profile-white.png" alt="Logo">
                 <span>Confession</span>
             </div>
-            <div class="content">
+            <div class="content" id="home">
+                <div class="post-write">
+                    <div class="profile">
+                        <img src="./asset/profile-pink.png" alt="profile">
+                        <span class="imposter">Impostor</span>
+                    </div>
+                    <div class="write-content">
+                        <form>
+                            <textarea oninput=auto_grow(this) class="text-box"
+                                placeholder="Write your confession here"></textarea>
+                        </form>
+                    </div>
+                </div>
                 <div class="post-box">
                     <div class="profile">
                         <img src="./asset/profile-black.png" alt="profile">
@@ -98,7 +111,7 @@
                         <span class="imposter">Impostor</span>
                         <span class="imposter profile-id">#2</span>
                         <span class="imposter dot">•</span>
-                        <span class="imposter post-time">5 mins ago</span>
+                        <span class="imposter post-time">10 months ago</span>
                     </div>
                     <div class="post-content">
                         <span class="post-text">1) Sustainability is an Integral Part of Business Priorities
