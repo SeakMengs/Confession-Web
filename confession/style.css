@@ -1,0 +1,170 @@
+/* import font from google */
+@import url('https://fonts.googleapis.com/css2?family=Silkscreen&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    text-decoration: 0;
+    color: black;
+    font-family: 'Silkscreen', cursive;
+}
+
+body {
+    background-color: #D9D9D9;
+}
+
+header {
+    background: white;
+    padding: 10px 0;
+    position: sticky;
+    top: 0px;
+}
+
+/* this container right here make the nav bar go middle */
+.container {
+    width: 50%;
+    margin: 0 auto;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+.home {
+    font-size: 35px;
+}
+
+.search {
+    padding: 8px;
+    font-size: 16px;
+    background: #D9D9D9;
+    display: flex;
+    align-items: center;
+    border-radius: 50px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    -ms-border-radius: 50px;
+    -o-border-radius: 50px;
+}
+
+.input-search {
+    margin-left: 10px;
+    border: none;
+    background: #D9D9D9;
+    outline: none;
+    width: 12rem;
+}
+
+/* Section */
+.top-logo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0 ;
+    font-size: 35px;
+}
+
+.content {
+    background: #D2D2D2;
+    height: auto;
+    padding: 50px 0px;
+}
+
+.post-box {
+    width: 80%;
+    height: auto;
+    margin: 25px auto;
+    background: #D9D9D9;
+    padding: 20px;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+}
+
+.imposter {
+    margin: auto 5px;
+}
+
+.dot {
+    font-size: 1.5rem;
+    color: #A5A5A5;
+}
+
+.post-time {
+    color: #A5A5A5;
+}
+
+.post-content {
+    padding: 5px 52px;
+}
+
+.post-text {
+    width: 100%;
+}
+
+.post-image {
+    width: 100%;
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    -ms-border-radius: 20px;
+    -o-border-radius: 20px;
+    height: auto;
+    margin: 1rem 0;
+}
+
+.reaction {
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    margin-top: 0.5rem;
+}
+
+.reaction img {
+    width: 25px;
+}
+
+/** @media query section */
+/* if lesser than 800px we remove search */
+@media only screen and (max-width: 800px){
+    .search {
+        display:none;
+    }
+    nav {
+        justify-content: center;
+    }
+    .container {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+/* for mobile screen */
+@media only screen and (max-width: 600px) {
+    .container {
+        width: 100%;
+        margin: 0 auto;
+    }
+    .content {
+        padding: 25px 0px;
+    }
+    .top-logo {
+        background: #D2D2D2;
+        margin-top: 50px;
+    }
+    body {
+        background: #D2D2D2;
+    }
+}
