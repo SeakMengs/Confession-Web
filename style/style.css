@@ -218,7 +218,7 @@ nav {
 
 /** @media query section */
 /* if lesser than 800px we remove search */
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 912px){
     .search {
         display:none;
     }
@@ -275,5 +275,11 @@ nav {
     .profile img {
         width: 30px;
         height: 30px;
+    }
+}
+
+@media only screen and (max-width: 280px) {
+    .add-on {
+        margin: 0px 15px 0px 0px;
     }
 }
