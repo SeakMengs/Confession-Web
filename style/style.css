@@ -107,7 +107,7 @@ nav {
 }
 
 .post-content {
-    padding: 5px 52px;
+    padding: 5px 5px;
 }
 
 .post-text {
@@ -169,5 +169,28 @@ nav {
     }
     .post-box {
         width: 95%;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .reaction {
+        font-size: 15px;
+    }
+    
+    .reaction img {
+        width: 20px;
+    }
+    .post-text {
+        font-size: 12px;
+    }
+    .imposter {
+        font-size: 12px;
+    }
+    .profile img {
+        width: 30px;
+        height: 30px;
+    }
+    .post-content {
+        padding: 5px 5px 5px 0px;
     }
 }
