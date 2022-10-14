@@ -107,7 +107,7 @@ nav {
 }
 
 .post-content {
-    padding: 5px 5px;
+    padding: 10px 5px 5px 5px;
 }
 
 .post-text {
@@ -189,8 +189,5 @@ nav {
     .profile img {
         width: 30px;
         height: 30px;
-    }
-    .post-content {
-        padding: 5px 5px 5px 0px;
     }
 }
