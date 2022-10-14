@@ -147,8 +147,18 @@ nav {
     resize: none;
     font-size: 16px;
 }
+
 .text-box::-webkit-scrollbar {
     display: none;
+}
+
+.pin-code {
+    border: none;
+    resize:none;
+    width: 15%;
+    outline: none;
+    background: #D9D9D9;
+    resize: none;
 }
 
 .post-image {
@@ -169,6 +179,11 @@ nav {
     margin-top: 0.5rem;
 }
 
+.reaction-align {
+    display: flex;
+    align-items: center;
+}
+
 .reaction img {
     width: 25px;
 }
@@ -183,7 +198,7 @@ nav {
 }
 
 .add-on {
-    margin: 0px 50px 0px 0px;
+    margin: 0 50px 0 0;
 }
 
 .write-submit {
