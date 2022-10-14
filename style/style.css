@@ -69,6 +69,11 @@ nav {
     font-size: 35px;
 }
 
+.top-logo img {
+    width: 68px;
+    height: 68px;
+}
+
 .content {
     background: #D2D2D2;
     height: auto;
