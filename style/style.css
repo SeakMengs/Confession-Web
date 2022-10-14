@@ -10,7 +10,9 @@
     color: black;
     font-family: 'Silkscreen', cursive;
 }
-
+html  {
+    scroll-behavior: smooth;
+}
 body {
     background-color: #D9D9D9;
 }
@@ -170,6 +172,49 @@ nav {
 .reaction img {
     width: 25px;
 }
+
+.write-add-on {
+    display: flex;
+}
+
+.write-add-on img {
+    width: 25px;
+    height: 25px;
+}
+
+.add-on {
+    margin: 0px 50px 0px 0px;
+}
+
+.write-submit {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    align-items: center;
+    border-top: 1px solid #A5A5A5;
+    padding-top: 8px;
+}
+
+.write-btn {
+    border: none;
+    padding: 10px;
+    border-radius: 25px;
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+    transition: 0.5s;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    cursor: pointer;
+}
+
+.write-btn:hover {
+    background: #D2D2D2;
+}
+
 
 /** @media query section */
 /* if lesser than 800px we remove search */
