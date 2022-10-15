@@ -16,6 +16,9 @@ mongoose.connect(process.env.databaseUrl, {useNewUrlParser: true}, () => {
     console.log("Connected to mongodb database server")
 })
 
+app.get('/', (res) => {
+    res.setEncoding("We are on home");
+})
 // ? middleware to tell express that the server accept json
 app.use(express.json())
 app.use(router)
