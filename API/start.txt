@@ -1,0 +1,6 @@
+npm init - y
+npm install express
+npm install nodemon
+npm install body-parser
+npm install dotenv
+npm install mongoose
