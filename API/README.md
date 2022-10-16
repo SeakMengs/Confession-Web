@@ -1,11 +1,13 @@
 # Confession-API
 
-npm init - y
-npm install express
-npm install nodemon
-npm install body-parser
-npm install dotenv
-npm install mongoose
+npm init - y <br>
+npm install express <br>
+npm install nodemon <br>
+npm install body-parser <br>
+npm install dotenv <br>
+npm install mongoose <br>
+npm install serverless-http <br>
+npm install netlify-lambda <br>
 
 things to be cautious:
 
@@ -14,3 +16,6 @@ things to be cautious:
 # https://stackoverflow.com/questions/56257048/why-body-parser-json-is-not-working-showing-syntaxerror-unexpected-token
 
 # https://stackoverflow.com/questions/58390480/mongodb-collection-name
+
+
+"start": "nodemon api.js"
