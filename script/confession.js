@@ -1,20 +1,25 @@
-postData = []
+const postData = []
 
-window.onload = function() {
-    fetchData()
+window.onload = async function() {
+    await generatePost()
     console.log(postData)
 }
 
 function fetchData() {
-    fetch('https://yatoconfessionapi77.netlify.app/.netlify/functions/api/all').then((res) => {
+    return fetch('https://yatoconfessionapi77.netlify.app/.netlify/functions/api/all').then((res) => {
         return res.json()
     }).then((data) => {
         return data
-    }).then((result) => {
-        postData = result
     })
 }
 
+function generatePost() {
+    fetchData().then(function(result) {
+        for (let i = 0; i < result.length; i++) {
+            postData.push(result[i]);
+        }
+    })
+}
 
 //*Credit https://stackoverflow.com/questions/17772260/textarea-auto-height
 function auto_grow(element) {
