@@ -1,3 +1,21 @@
+postData = []
+
+window.onload = function() {
+    fetchData()
+    console.log(postData)
+}
+
+function fetchData() {
+    fetch('https://yatoconfessionapi77.netlify.app/.netlify/functions/api/all').then((res) => {
+        return res.json()
+    }).then((data) => {
+        return data
+    }).then((result) => {
+        postData = result
+    })
+}
+
+
 //*Credit https://stackoverflow.com/questions/17772260/textarea-auto-height
 function auto_grow(element) {
     element.style.height = "5px";
@@ -20,4 +38,5 @@ function sendCmt(event) {
         console.log('Comment has no content! Send denied')
     }
     document.getElementById(`content#${impId}`).value = ''
+    document.getElementById(`content#${impId}`).style.height = '20px'
 }

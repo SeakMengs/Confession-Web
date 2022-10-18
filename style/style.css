@@ -266,6 +266,10 @@ nav {
     -o-border-radius: 5px;
 }
 
+.comment-text span {
+    word-wrap: break-word;
+}
+
 .comment-text::-webkit-scrollbar {
     display: none;
 }
@@ -277,7 +281,6 @@ nav {
 }
 
 .cmt-text {
-    /* margin-left: 1.65rem; */
     font-size: 16px;
     background-color: #D2D2D2;
     padding: 5px;
@@ -289,6 +292,7 @@ nav {
     display: flex;
     align-items: flex-start;
     margin: 15px 0px 15px 0px;
+    overflow-wrap: break-word;
 }
 
 .cmt-text img {
@@ -299,6 +303,15 @@ nav {
 .send:active {
     width: 30px;
     height: auto;
+}
+
+.viewmore {
+    display: flex;
+    justify-content: center;
+}
+
+.viewmore span:hover {
+    color: red;
 }
 
 /** @media query section */
