@@ -288,11 +288,17 @@ nav {
     -o-border-radius: 1rem;
     display: flex;
     align-items: flex-start;
+    margin: 15px 0px 15px 0px;
 }
 
 .cmt-text img {
     width: 30px;
-    padding: 3px 5px 0px 0px;
+    padding: 0px 5px 0px 0px;
+}
+
+.send:active {
+    width: 30px;
+    height: auto;
 }
 
 /** @media query section */
@@ -349,6 +355,9 @@ nav {
         font-size: 12px;
     }
     .imposter {
+        font-size: 12px;
+    }
+    .commented {
         font-size: 12px;
     }
     .profile img {
