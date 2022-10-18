@@ -19,4 +19,5 @@ function sendCmt(event) {
     } else {
         console.log('Comment has no content! Send denied')
     }
+    document.getElementById(`content#${impId}`).value = ''
 }
