@@ -229,11 +229,13 @@ async function sendCmt(event) {
     totalCmt = document.getElementById(`comment#${impId}`).innerText
     totalCmt = totalCmt.replace(' comments', '')
     totalCmt = parseInt(totalCmt)
+    totalCmt += 1
+    // console.log(totalCmt)
 
     if (totalCmt <= 1) {
-        document.getElementById(`comment#${impId}`).innerHTML = parseInt(1 + totalCmt) + " comment"
+        document.getElementById(`comment#${impId}`).innerHTML = totalCmt + " comment"
     } else if (totalCmt > 1) {
-        document.getElementById(`comment#${impId}`).innerHTML = parseInt(1 + totalCmt) + " comments"
+        document.getElementById(`comment#${impId}`).innerHTML = totalCmt + " comments"
     }
 }
 
