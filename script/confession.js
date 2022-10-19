@@ -11,6 +11,7 @@ const profile = [
 ]
 
 window.onload = async function () {
+    generateProfile()
     await generateData()
 }
 
@@ -31,6 +32,7 @@ function generateData() {
     }).then(() => {
         // ? after pushing data to our array we start generate the post
         console.log(postData)
+        // generateProfile()
         genertatePost()
     })
 }
@@ -127,6 +129,11 @@ function genertatePost() {
         `
         }
     }
+}
+
+function generateProfile() {
+    document.querySelector('.hub-logo').src = profile[randomNum(0, 5)]
+    document.querySelector('.prof-logo').src = profile[randomNum(0, 5)]
 }
 
 //*Credit https://stackoverflow.com/questions/17772260/textarea-auto-height
