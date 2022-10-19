@@ -314,9 +314,15 @@ nav {
     justify-content: center;
 }
 
-.viewmore span:hover {
+.viewmore span:active {
     color: red;
 }
+
+.reaction-align img:active {
+    width: 30px;
+    height: 30px;
+}
+
 
 /** @media query section */
 /* if lesser than 800px we remove search */
