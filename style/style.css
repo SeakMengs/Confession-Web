@@ -139,6 +139,10 @@ nav {
     width: 100%;
 }
 
+.div-post-text {
+    margin-bottom: 1rem;
+}
+
 .text-box {
     width: 100%;
     outline: none;
@@ -169,7 +173,7 @@ nav {
     -ms-border-radius: 20px;
     -o-border-radius: 20px;
     height: auto;
-    margin: 1rem 0;
+    /* margin: 1rem 0; */
 }
 
 .reaction {

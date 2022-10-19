@@ -19,13 +19,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="./asset/profile-red.ico">
     <script src="./script/confession.js" defer></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
 </head>
 
 <body>
     <header>
         <div class="container">
             <nav>
-                <a class="home" href="#home">Home</a>
+                <a class="home" href="#">Home</a>
                 <div class="search">
                     <a href="#">
                         <img src="./asset/searchs.png" width="25px" height="25px" alt="image">
@@ -49,7 +50,7 @@
                     </div>
                     <div class="write-content">
                         <form>
-                            <textarea oninput=auto_grow(this) class="text-box"
+                            <textarea oninput=auto_grow(this) class="text-box" id="confess-box"
                                 placeholder="Write your confession here"></textarea>
                         </form>
                     </div>
@@ -59,236 +60,107 @@
                             <img class="add-on" src="./asset/gif.png" alt="image">
                             <img class="add-on" src="./asset/emoji.png" alt="image">
                         </div>
-                        <button type="submit" class="write-btn btn btn-light"
-                            onclick="alert('Working on front-end first')">Confess</button>
+                        <button type="submit" class="write-btn btn btn-light" onclick=confess()>Confess</button>
                     </div>
                 </div>
-                <div class="post-box">
-                    <div class="profile">
-                        <img src="./asset/profile-black.png" alt="profile">
-                        <span class="imposter">Impostor</span>
-                        <span class="imposter profile-id">#1</span>
-                        <span class="imposter dot">•</span>
-                        <span class="imposter post-time">5 mins ago</span>
-                    </div>
-                    <div class="post-content" id="imp#1">
-                        <span class="post-text">Today’s remarkable vote at the United Nations General Assembly is a
-                            powerful
-                            reminder that the
-                            overwhelming majority of nations stand with Ukraine, in defense of the UN Charter, and in
-                            resolute opposition to Russia’s ongoing war against Ukraine and its people.
+                <div class="post-container">
+                    <div class="post-box">
+                        <div class="profile">
+                            <img src="./asset/profile-black.png" alt="profile">
+                            <span class="imposter">Impostor</span>
+                            <span class="imposter profile-id">#0</span>
+                            <span class="imposter dot">•</span>
+                            <span class="imposter post-time">5 mins ago</span>
+                        </div>
+                        <div class="post-content" id="imp#0">
+                            <div class="div-post-text">
+                                <span class="post-text">Today’s remarkable vote at the United Nations General Assembly
+                                    is a
+                                    powerful
+                                    reminder that the
+                                    overwhelming majority of nations stand with Ukraine, in defense of the UN Charter,
+                                    and
+                                    in
+                                    resolute opposition to Russia’s ongoing war against Ukraine and its people.
 
-                            Territorial integrity is a central pillar of the United Nations, and Russia’s violent
-                            contempt
-                            for Ukraine’s national borders and sovereignty cannot and will not be accepted. By adopting
-                            this
-                            resolution, the assembled nations made clear: they will not tolerate an attempt by any UN
-                            Member
-                            State to seize land by force. The vote delivers a resounding rebuke to Russia for its
-                            aggression
-                            against Ukraine.
+                                    Territorial integrity is a central pillar of the United Nations, and Russia’s
+                                    violent
+                                    contempt
+                                    for Ukraine’s national borders and sovereignty cannot and will not be accepted. By
+                                    adopting
+                                    this
+                                    resolution, the assembled nations made clear: they will not tolerate an attempt by
+                                    any
+                                    UN
+                                    Member
+                                    State to seize land by force. The vote delivers a resounding rebuke to Russia for
+                                    its
+                                    aggression
+                                    against Ukraine.
 
 
-                            The United States is proud to have voted in favor of this resolution. As we have stated
-                            repeatedly, we will defend the principles of the UN charter and will never recognize the
-                            legitimacy of sham referenda or Russia’s attempts to annex portions of Ukraine.
+                                    The United States is proud to have voted in favor of this resolution. As we have
+                                    stated
+                                    repeatedly, we will defend the principles of the UN charter and will never recognize
+                                    the
+                                    legitimacy of sham referenda or Russia’s attempts to annex portions of Ukraine.
 
-                            With very few nations voting with Russia today, it is clear that international unity on this
-                            question is resolute and support for Ukraine at the UN and beyond is unwavering. The United
-                            States will continue to work with partners across the globe to support Ukraine’s people in
-                            defending their nation in its entirety against Russia’s aggression.</span>
-                        <img class="post-image" src="./asset/quote.jpg" alt="image">
-                        <div class="reaction">
-                            <div class="sus reaction-align">
-                                <img src="./asset/sus.png" alt="reaction">
-                                <span class="sus-reaction">1010</span>
+                                    With very few nations voting with Russia today, it is clear that international unity
+                                    on
+                                    this
+                                    question is resolute and support for Ukraine at the UN and beyond is unwavering. The
+                                    United
+                                    States will continue to work with partners across the globe to support Ukraine’s
+                                    people
+                                    in
+                                    defending their nation in its entirety against Russia’s aggression.</span>
                             </div>
-                            <div class="downvote reaction-align">
-                                <img src="./asset/voted.png" alt="reaction">
-                                <span class="vote-reaction">500</span>
+                            <img class="post-image" src="./asset/quote.jpg" alt="image">
+                            <div class="reaction">
+                                <div class="sus reaction-align">
+                                    <img src="./asset/sus.png" alt="reaction">
+                                    <span class="sus-reaction">1000</span>
+                                </div>
+                                <div class="downvote reaction-align">
+                                    <img src="./asset/voted.png" alt="reaction">
+                                    <span class="vote-reaction">500</span>
+                                </div>
+                                <div class="comment reaction-align">
+                                    <span class="comment-btn">Comment</span>
+                                </div>
+                                <div class="report reaction-align">
+                                    <img src="./asset/report.png" alt="reaction">
+                                    <span class="report-reaction">100</span>
+                                </div>
                             </div>
-                            <div class="comment reaction-align">
-                                <span class="comment-btn">Comment</span>
+                            <div class="comment-area">
+                                <form class="comment-form">
+                                    <textarea oninput=auto_grow(this) class="comment-text"
+                                        placeholder="Write a public comment..." id="content#0"></textarea>
+                                </form>
+                                <img onclick=sendCmt(id) id="send#0" class="send" src="./asset/send.png" alt="send">
                             </div>
-                            <div class="report reaction-align">
-                                <img src="./asset/report.png" alt="reaction">
-                                <span class="report-reaction">10</span>
+                            <div class="commented" id="cmt#0">
+                                <div class="cmt-text" id="cmted#1">
+                                    <img src="./asset/profile-pink.png" alt="profile">
+                                    <span> Sustainability is an Integral Part of Business Priorities
+                                        According to the study, 77% of organizations in ASEAN are focusing on becoming
+                                        sustainable
+                                        organizations. They are
+                                    </span>
+                                </div>
+                                <div class="cmt-text" id="cmted#2">
+                                    <img src="./asset/profile-green.png" alt="profile">
+                                    <span> Sustainability is an Integral Part of Business Priorities
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error voluptatibus
+                                        reprehenderit at sit tempora nemo architecto ratione temporibus accusamus
+                                        recusandae
+                                        vitae neque, cupiditate animi placeat est! Vero ipsam commodi voluptas?
+                                    </span>
+                                </div>
                             </div>
-                        </div>
-                        <div class="comment-area">
-                            <form class="comment-form">
-                                <textarea oninput=auto_grow(this) class="comment-text"
-                                    placeholder="Write a public comment..." id="content#1"></textarea>
-                            </form>
-                            <img onclick=sendCmt(id) id="send#1" class="send" src="./asset/send.png" alt="send">
-                        </div>
-                        <div class="commented" id="cmt#1">
-                            <div class="cmt-text" id="cmted#1">
-                                <img src="./asset/profile-pink.png" alt="profile">
-                                <span> Sustainability is an Integral Part of Business Priorities
-                                    According to the study, 77% of organizations in ASEAN are focusing on becoming
-                                    sustainable
-                                    organizations. They are
-                                </span>
-                            </div>
-                            <div class="cmt-text" id="cmted#2">
-                                <img src="./asset/profile-green.png" alt="profile">
-                                <span> Sustainability is an Integral Part of Business Priorities
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error voluptatibus
-                                    reprehenderit at sit tempora nemo architecto ratione temporibus accusamus recusandae
-                                    vitae neque, cupiditate animi placeat est! Vero ipsam commodi voluptas?
-                                </span>
-                            </div>
-                        </div>
-                        <div class="viewmore">
-                            <span>View more....</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-box">
-                    <div class="profile">
-                        <img src="./asset/profile-red.png" alt="profile">
-                        <span class="imposter">Impostor</span>
-                        <span class="imposter profile-id">#2</span>
-                        <span class="imposter dot">•</span>
-                        <span class="imposter post-time">10 months ago</span>
-                    </div>
-                    <div class="post-content" id="imp#2">
-                        <span class="post-text">1) Sustainability is an Integral Part of Business Priorities
-                            According to the study, 77% of organizations in ASEAN are focusing on becoming sustainable
-                            organizations. They are being driven to develop and demonstrate an ESG consciousness in
-                            their actions and investment, by their customers, investors and by governments’
-                            sustainability mandates. However, many organizations pursue sustainability goals without a
-                            strategy backing them up – only 23% of organizations in ASEAN have a corporate
-                            sustainability strategy.
-                            <br> <br>
-                            2) Organizations Often Lack a Holistic Sustainability Strategy
-                            While the majority of organizations are focusing on budget allocation for sustainability
-                            initiatives, they have not gone beyond that to identify the right skills and data required
-                            to support the initiatives. Only 4% of organizations across ASEAN have a holistic strategy
-                            and are focusing on external and last-mile challenges such as negotiating ambiguous
-                            reporting frameworks.
-                            <br> <br>
-                            3) Customers and Investors Drive Sustainability Efforts
-                            Responding to customer expectations has become a norm for every successful business today –
-                            and this extends to environmental and social consciousness. In fact, customers are driving
-                            environmental and social responsibility in organizations; in most cases more than
-                            regulations are. This is especially true in Philippines, Indonesia and Thailand.
-                            <br> <br>
-                            4) Data is a Leading Challenge for Sustainability Initiatives
-                            The study finds that the leading barriers to sustainability projects in ASEAN are: 60%
-                            operational costs, 55% data availability and 50% lack of dedicated resources. This confirms
-                            that organizations’ sustainability initiatives are still at preliminary stage. In today’s
-                            data-driven world, it is very likely that organizations have access to the data needed for
-                            their sustainability efforts. But it is often not integrated within their overall data
-                            strategy that helps identify the right data sets, collect the necessary data across all
-                            operations, and has embedded analytics for the right insights.
-                            <br> <br>
-                            5) The Media & Telecom Industry is Ahead of the Curve
-                            While sustainability initiatives are yet to mature, some industries are leading the way in
-                            their strategies, and especially in their initiatives. Media & Telecom and Energy &
-                            Utilities for example, are among the most mature industries given the incentives to adopt
-                            sustainable practices are cost-related and for future survival. Other industries that have
-                            initiated smaller eco-friendly measures have also found some early success and this includes
-                            the Retail industry where there has been focus on reducing the use of plastic in packaging
-                            and procuring locally to reduce carbon footprints. </span>
-                        <img class="post-image" src="./asset/chihuahua.gif" alt="image">
-                        <div class="reaction">
-                            <div class="sus reaction-align">
-                                <img src="./asset/sus.png" alt="reaction">
-                                <span class="sus-reaction">1010</span>
-                            </div>
-                            <div class="downvote reaction-align">
-                                <img src="./asset/voted.png" alt="reaction">
-                                <span class="vote-reaction">500</span>
-                            </div>
-                            <div class="comment reaction-align">
-                                <span class="comment-btn">Comment</span>
-                            </div>
-                            <div class="report reaction-align">
-                                <img src="./asset/report.png" alt="reaction">
-                                <span class="report-reaction">10</span>
-                            </div>
-                        </div>
-                        <div class="comment-area">
-                            <form class="comment-form">
-                                <textarea oninput=auto_grow(this) class="comment-text"
-                                    placeholder="Write a public comment..." id="content#2"></textarea>
-                            </form>
-                            <img onclick=sendCmt(id) id="send#2" class="send" src="./asset/send.png" alt="send">
-                        </div>
-                        <div class="commented" id="cmt#2">
-                            <div class="cmt-text" id="cmted#1">
-                                <img src="./asset/profile-pink.png" alt="profile">
-                                <span> Sustainability is an Integral Part of Business Priorities
-                                    According to the study, 77% of organizations in ASEAN are focusing on becoming
-                                    sustainable
-                                    organizations. They are
-                                </span>
-                            </div>
-                            <div class="cmt-text" id="cmted#2">
-                                <img src="./asset/profile-green.png" alt="profile">
-                                <span> Sustainability is an Integral Part of Business Priorities
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error voluptatibus
-                                    reprehenderit at sit tempora nemo architecto ratione temporibus accusamus recusandae
-                                    vitae neque, cupiditate animi placeat est! Vero ipsam commodi voluptas?
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="post-box">
-                    <div class="profile">
-                        <img src="./asset/profile-green.png" alt="profile">
-                        <span class="imposter">Impostor</span>
-                        <span class="imposter profile-id">#3</span>
-                        <span class="imposter dot">•</span>
-                        <span class="imposter post-time">10 months ago</span>
-                    </div>
-                    <div class="post-content" id="imp#3">
-                        <span class="post-text">Dwayne Douglas Johnson, also known by his ring name The Rock, is an
-                            American actor, producer, businessman, and former professional wrestler. </span>
-                        <img class="post-image" src="./asset/rock.gif" alt="image">
-                        <div class="reaction">
-                            <div class="sus reaction-align">
-                                <img src="./asset/sus.png" alt="reaction">
-                                <span class="sus-reaction">1010</span>
-                            </div>
-                            <div class="downvote reaction-align">
-                                <img src="./asset/voted.png" alt="reaction">
-                                <span class="vote-reaction">500</span>
-                            </div>
-                            <div class="comment reaction-align">
-                                <span class="comment-btn">Comment</span>
-                            </div>
-                            <div class="report reaction-align">
-                                <img src="./asset/report.png" alt="reaction">
-                                <span class="report-reaction">10</span>
-                            </div>
-                        </div>
-                        <div class="comment-area">
-                            <form class="comment-form">
-                                <textarea oninput=auto_grow(this) class="comment-text"
-                                    placeholder="Write a public comment..." id="content#3"></textarea>
-                            </form>
-                            <img onclick=sendCmt(id) id="send#3" class="send" src="./asset/send.png" alt="send">
-                        </div>
-                        <div class="commented" id="cmt#3">
-                            <div class="cmt-text" id="cmted#1">
-                                <img src="./asset/profile-pink.png" alt="profile">
-                                <span> Sustainability is an Integral Part of Business Priorities
-                                    According to the study, 77% of organizations in ASEAN are focusing on becoming
-                                    sustainable
-                                    organizations. They are
-                                </span>
-                            </div>
-                            <div class="cmt-text" id="cmted#2">
-                                <img src="./asset/profile-green.png" alt="profile">
-                                <span> Sustainability is an Integral Part of Business Priorities
-                                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error voluptatibus
-                                    reprehenderit at sit tempora nemo architecto ratione temporibus accusamus recusandae
-                                    vitae neque, cupiditate animi placeat est! Vero ipsam commodi voluptas?
-                                </span>
+                            <div class="viewmore">
+                                <span>View more....</span>
                             </div>
                         </div>
                     </div>
