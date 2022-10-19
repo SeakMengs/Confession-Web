@@ -4,23 +4,40 @@ const  postSchema = new mongoose.Schema(
     {
         text: {
             type: String,
-            // required: true,
+            required: false
         },
         image: {
             type: String,
-            // required: true,
+            required: false
         },
-        comment: {
-            type: String,
-            // required: true,
+        upvote: {
+            type: Number,
+            required: false
         },
+        downvote: {
+            type: Number,
+            required: false
+        },
+        share: {
+            type: Number,
+            required: false
+        },
+        comment: [
+            {
+                comments: {
+                    type: String,
+                    require: false
+                }
+            }
+
+        ],
         pin: {
             type: String,
-            // required: true,
+            required: false
         },
         impostorId: {
             type: String,
-            // required: true,
+            required: true
         },
         date: {
             type: Date,

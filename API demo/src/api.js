@@ -10,12 +10,12 @@ const bodyParser = require('body-parser')
 const { response } = require('express');
 const serverless = require("serverless-http")
 const cors = require('cors')
-app.use(cors());
-var databaseUrl = ""
+app.use(cors({ origin: '*'}));
+
 
 // ? connect db server
 mongoose.connect(
-    databaseUrl,
+    DatabaseURL, //* Database url here
     { useNewUrlParser: true, useUnifiedTopology: true },
     function (err, res) {
         if (err) {

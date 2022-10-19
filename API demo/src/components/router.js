@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 });
 
 //Give all post info
-router.get(`/all`, async(req, res) => {
+router.get(`/post/all`, async(req, res) => {
     try {
         const allPost = await postModel.find()
         res.json(allPost);
@@ -38,29 +38,32 @@ router.get('/post/byID/:impostorId', async (req, res) => {
 })
 
 //Give post by ids
-router.get('/post/byIDs/:impostorId', async (req, res) => {
-    // ? find by id
-    //*example http://www.yato.com/253
-    //* 253 is params
-    try {
-        postModel.find({impostorId: req.params.impostorId}, (err, post) => {
-            if (post != null) {
-                res.json(post)
-            } else if (post == null) {
-                res.status(404).send("IDs not found")
-            }
-        })
-    } catch (err) {
-        res.json({ message: err.message})
-    }
-})
+// router.get('/post/byIDs/:impostorId', async (req, res) => {
+//     // ? find by id
+//     //*example http://www.yato.com/253
+//     //* 253 is params
+//     try {
+//         postModel.find({impostorId: req.params.impostorId}, (err, post) => {
+//             if (post != null) {
+//                 res.json(post)
+//             } else if (post == null) {
+//                 res.status(404).send("IDs not found")
+//             }
+//         })
+//     } catch (err) {
+//         res.json({ message: err.message})
+//     }
+// })
 
 //Post content to api
-router.post(`/hey`, bodyParser.json(), async (req, res) => {
+router.post(`/post`, bodyParser.json(), async (req, res) => {
     const newPost = new postModel(
         {
             text: req.body.text,
             image: req.body.image,
+            upvote: req.body.upvote,
+            downvote: req.body.downvote,
+            share: req.body.share,
             comment: req.body.comment,
             pin: req.body.pin,
             impostorId: req.body.impostorId
@@ -78,18 +81,19 @@ router.post(`/hey`, bodyParser.json(), async (req, res) => {
 })
 
 //Update data
-router.patch("/", bodyParser.json(), async(req, res) => {
+router.patch("/post/by_id/:impostorId", bodyParser.json(), async(req, res) => {
     try {
         const updatePost = await postModel.updateOne(
-            { _id: req.params._id },
+            { impostorId: req.params.impostorId },
             {
                 $set:
                 {
                     text: req.body.text,
                     image: req.body.image,
-                    comment: req.body.comment,
-                    pin: req.body.pin,
-                    impostorId: req.body.impostorId
+                    upvote: req.body.upvote,
+                    downvote: req.body.downvote,
+                    share: req.body.share,
+                    comment: req.body.comment
                 }
             }
         )
@@ -99,14 +103,14 @@ router.patch("/", bodyParser.json(), async(req, res) => {
     }
 })
 
-router.delete(`/post/byID/:impostorId`, async(req, res) => {
-    try {
-        const removePost = await postModel.deleteOne({impostorId: req.params.impostorId})
-        res.json({ message: 'Remove successfully' })
-    } catch (err) {
-        res.json({ message: err.message })
-    }
-})
+// router.delete(`/post/byID/:impostorId`, async(req, res) => {
+//     try {
+//         const removePost = await postModel.deleteOne({impostorId: req.params.impostorId})
+//         res.json({ message: 'Remove successfully' })
+//     } catch (err) {
+//         res.json({ message: err.message })
+//     }
+// })
 
 router.get('*', (req, res) => {
     res.send("incorrect API route")
