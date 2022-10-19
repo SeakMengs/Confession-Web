@@ -9,7 +9,6 @@ npm install mongoose <br>
 npm install serverless-http <br>
 npm install netlify-lambda <br>
 
-things to be cautious:
 
 # https://stackoverflow.com/questions/60020381/mongodb-atlas-bad-auth-authentication-failed-code-8000
 
