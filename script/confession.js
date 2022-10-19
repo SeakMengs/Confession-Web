@@ -8,6 +8,8 @@ const profile = [
     "./asset/profile-green.png"
 ]
 
+var formatter = Intl.NumberFormat('en', { notation: 'compact'})
+
 // ? when window on load we generate posts and comments
 window.onload = async function () {
     generateProfile()
@@ -55,19 +57,19 @@ function genertatePost() {
                     </div>
                     <div class="reaction">
                         <div class="sus reaction-align">
-                            <img src="./asset/sus.png" alt="reaction">
-                            <span class="sus-reaction" id="upvote#${postData[i].impostorId}">${postData[i].upvote}</span>
+                            <img onclick=upvote(id) id="up#${postData[i].impostorId}" src="./asset/sus.png" alt="reaction">
+                            <span class="sus-reaction" id="upvote#${postData[i].impostorId}">${formatter.format(postData[i].upvote)}</span>
                         </div>
                         <div class="downvote reaction-align">
-                            <img src="./asset/voted.png" alt="reaction">
-                            <span class="vote-reaction" id="downvote#${postData[i].impostorId}">${postData[i].downvote}</span>
+                            <img onclick=downvote(id) id="down#${postData[i].impostorId}" src="./asset/voted.png" alt="reaction">
+                            <span class="vote-reaction" id="downvote#${postData[i].impostorId}">${formatter.format(postData[i].downvote)}</span>
                         </div>
                         <div class="comment reaction-align">
                             <span class="comment-btn" id="comment#${postData[i].impostorId}">0 Comment</span>
                         </div>
                         <div class="report reaction-align">
-                            <img src="./asset/report.png" alt="reaction">
-                            <span class="report-reaction" id="share#${postData[i].impostorId}">${postData[i].share}</span>
+                            <img onclick=reportvote(id) id="report#${postData[i].impostorId}" src="./asset/report.png" alt="reaction">
+                            <span class="report-reaction" id="share#${postData[i].impostorId}">${formatter.format(postData[i].share)}</span>
                         </div>
                     </div>
                     <div class="comment-area">
@@ -99,19 +101,19 @@ function genertatePost() {
                     <img class="post-image" src="${postData[i].image}" alt="image">
                     <div class="reaction">
                         <div class="sus reaction-align">
-                            <img src="./asset/sus.png" alt="reaction">
-                            <span class="sus-reaction" id="upvote#${postData[i].impostorId}">${postData[i].upvote}</span>
+                            <img onclick=upvote(id) id="up#${postData[i].impostorId}" src="./asset/sus.png" alt="reaction">
+                            <span class="sus-reaction" id="upvote#${postData[i].impostorId}">${formatter.format(postData[i].upvote)}</span>
                         </div>
                         <div class="downvote reaction-align">
-                            <img src="./asset/voted.png" alt="reaction">
-                            <span class="vote-reaction" id="downvote#${postData[i].impostorId}">${postData[i].downvote}</span>
+                            <img onclick=downvote(id) id="down#${postData[i].impostorId}" src="./asset/voted.png" alt="reaction">
+                            <span class="vote-reaction" id="downvote#${postData[i].impostorId}">${formatter.format(postData[i].downvote)}</span>
                         </div>
                         <div class="comment reaction-align">
                             <span class="comment-btn" id="comment#${postData[i].impostorId}">0 Comment</span>
                         </div>
                         <div class="report reaction-align">
-                            <img src="./asset/report.png" alt="reaction">
-                            <span class="report-reaction" id="share#${postData[i].impostorId}">${postData[i].share}</span>
+                            <img onclick=reportvote(id) id="report#${postData[i].impostorId}" src="./asset/report.png" alt="reaction">
+                            <span class="report-reaction" id="share#${postData[i].impostorId}">${formatter.format(postData[i].share)}</span>
                         </div>
                     </div>
                     <div class="comment-area">
@@ -160,9 +162,9 @@ function generateComment() {
                 tempText = ''
             }
             if (postData[i].comment.length == 0 || postData[i].comment.length == 1) {
-                document.getElementById(`comment#${postData[i].impostorId}`).innerHTML = postData[i].comment.length + " comment"
+                document.getElementById(`comment#${postData[i].impostorId}`).innerHTML = formatter.format(postData[i].comment.length) + " comment"
             } else if (postData[i].comment.length > 1) {
-                document.getElementById(`comment#${postData[i].impostorId}`).innerHTML = postData[i].comment.length + " comments"
+                document.getElementById(`comment#${postData[i].impostorId}`).innerHTML = formatter.format(postData[i].comment.length) + " comments"
             }
         }
     }
@@ -233,9 +235,9 @@ async function sendCmt(event) {
     // console.log(totalCmt)
 
     if (totalCmt <= 1) {
-        document.getElementById(`comment#${impId}`).innerHTML = totalCmt + " comment"
+        document.getElementById(`comment#${impId}`).innerHTML = formatter.format(totalCmt) + " comment"
     } else if (totalCmt > 1) {
-        document.getElementById(`comment#${impId}`).innerHTML = totalCmt + " comments"
+        document.getElementById(`comment#${impId}`).innerHTML = formatter.format(totalCmt) + " comments"
     }
 }
 
@@ -299,4 +301,64 @@ async function confess() {
         document.querySelector('.post-container').innerHTML = ''
         generateData()
     }
+}
+
+async function upvote(impID) {
+    impID = impID.replace('up#', '')
+    await fetchData().then(function (allData) {
+        try {
+            if (allData[impID - 1].impostorId == impID) {
+                axios.patch(`https://yatoconfessionapi77.netlify.app/.netlify/functions/api/post/by_id/${impID}`, {
+                    upvote: allData[impID - 1].upvote + 1
+                }).then((res) => {
+                    console.log("Upvoted")
+                    // console.log(res)
+                    return res
+                })
+                document.getElementById(`upvote#${impID}`).innerHTML = formatter.format(allData[impID - 1].upvote + 1)
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    })
+}
+
+async function downvote(impID) {
+    impID = impID.replace('down#', '')
+    await fetchData().then(function (allData) {
+        try {
+            if (allData[impID - 1].impostorId == impID) {
+                axios.patch(`https://yatoconfessionapi77.netlify.app/.netlify/functions/api/post/by_id/${impID}`, {
+                    downvote: allData[impID - 1].downvote - 1
+                }).then((res) => {
+                    console.log("Downvoted")
+                    // console.log(res)
+                    return res
+                })
+                document.getElementById(`downvote#${impID}`).innerHTML = formatter.format(allData[impID - 1].downvote - 1)
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    })
+}
+
+async function reportvote(impID) {
+    impID = impID.replace('report#', '')
+    await fetchData().then(function (allData) {
+        try {
+            if (allData[impID - 1].impostorId == impID) {
+                axios.patch(`https://yatoconfessionapi77.netlify.app/.netlify/functions/api/post/by_id/${impID}`, {
+                    share: allData[impID - 1].share + 1
+                }).then((res) => {
+                    console.log("Reported")
+                    // console.log(res)
+                    return res
+                })
+                document.getElementById(`share#${impID}`).innerHTML = formatter.format(allData[impID - 1].share + 1)
+            }
+        } catch (err) {
+            console.log(err)
+        }
+    })
 }

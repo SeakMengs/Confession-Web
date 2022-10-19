@@ -24,6 +24,10 @@ header {
     top: 0px;
 }
 
+span {
+    overflow-wrap: anywhere;
+}
+
 /* this container right here make the nav bar go middle */
 .container {
     width: 50%;
@@ -296,7 +300,6 @@ nav {
     display: flex;
     align-items: flex-start;
     margin: 15px 0px 15px 0px;
-    overflow-wrap: break-word;
 }
 
 .cmt-text img {
