@@ -194,10 +194,6 @@ nav {
     margin-top: 0.5rem;
 }
 
-.reaction-align {
-    display: flex;
-    align-items: center;
-}
 
 .reaction img {
     width: 25px;
@@ -312,9 +308,19 @@ nav {
     padding: 0px 5px 0px 0px;
 }
 
+.send {
+    width: 25px;
+    height: 25px;
+    transition: 0.1s;
+    -webkit-transition: 0.1s;
+    -moz-transition: 0.1s;
+    -ms-transition: 0.1s;
+    -o-transition: 0.1s;
+}
+
 .send:active {
-    width: 30px;
-    height: auto;
+    width: 20px;
+    height: 20px;
 }
 
 .viewmore {
@@ -326,9 +332,48 @@ nav {
     color: red;
 }
 
+.reaction-align {
+    display: flex;
+    align-items: center;
+    transition: 0.2s;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+}
+
 .reaction-align img:active {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
+}
+
+.progress-bar{
+    width: 50%;
+    position: relative;
+    height: 4px;
+    margin-top: 4px;
+}
+
+.progress-bar .progress{
+    height: 4px;
+    background-color: #D2D2D2;
+    width: 0;
+}
+
+.remove-img {
+    width: 24px;
+    height: auto;
+    float: right;
+    transition: 0.2s;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -ms-transition: 0.2s;
+    -o-transition: 0.2s;
+}
+
+.remove-img:active {
+    width: 12px;
+    height: auto;
 }
 
 

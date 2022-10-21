@@ -276,11 +276,13 @@ async function confess() {
     var currentPostID
     var contentData = []
     var confessionContent = document.getElementById('confess-box').value
-    var imgLink = document.getElementById('img-content').src
+    var imgLink = ''
     var upvotes = '0'
     var downvotes = '0'
     var shares = '0'
     var pins = '0000'
+
+    imgLink = document.getElementById('img-content').src
 
     if (confessionContent != "") {
         await fetchData().then(function (allData) {
@@ -304,6 +306,9 @@ async function confess() {
         document.querySelector('.post-container').innerHTML = ''
         document.getElementById('img-content').src = ''
         document.getElementById('img-content').style.display = 'none'
+        // document.getElementById('vid-content').src = ''
+        // document.getElementById('vid-content').style.display = 'none'
+        document.getElementById('remove-upload').style.display = "none"
         generateData()
     }
 }
@@ -368,6 +373,9 @@ async function reportvote(impID) {
     })
 }
 
-// function uploadImg() {
-//     document.getElementById('upload-input').click()
-// }
+function removeImg() {
+    document.getElementById('img-content').removeAttribute('src')
+    document.getElementById('img-content').style.display = 'none'
+    // document.getElementById('vid-content').src = ''
+    document.getElementById('remove-upload').style.display = "none";
+}

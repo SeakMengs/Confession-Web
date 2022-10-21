@@ -58,7 +58,14 @@
                         </form>
                     </div>
                     <div class="post-img" id="post-img">
-                        <img class="img-content" id="img-content" alt="Image" style="display: none;">
+                        <div class="progress-bar" id="progress-bar">
+                            <div class="progress" id="progress"></div>
+                        </div>
+                        <img class="remove-img" id="remove-upload" onclick=removeImg() src="./asset/minuss.png"
+                            style="display: none;">
+                        <img class=" img-content" id="img-content" alt="Image""
+                            style=" display: none;">
+                        <!-- <video class="vid-content" id="vid-content" alt="Video" style="display: none;"></video> -->
                     </div>
                     <div class="write-submit">
                         <div class="write-add-on">
@@ -82,7 +89,8 @@
                         </div>
                         <div class="post-content" id="imp#0">
                             <div class="div-post-text">
-                                <span class="post-text">This is a demo post (it is not stored in the database)</span>
+                                <span class="post-text">This is a demo post (it is not stored in the
+                                    database)</span>
                             </div>
                             <img class="post-image" src="./asset/quote.jpg" alt="image">
                             <div class="reaction">

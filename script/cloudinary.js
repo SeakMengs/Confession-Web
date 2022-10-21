@@ -47,6 +47,16 @@ function uploadFile(file) {
     xhr.open('POST', url, true);
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 
+    // Reset the upload progress bar
+    document.getElementById('progress').style.display = "block";
+    document.getElementById('progress').style.width = 0;
+
+    // Update progress (can be used to show progress indicator)
+    xhr.upload.addEventListener("progress", function (e) {
+        var progress = Math.round((e.loaded * 100.0) / e.total);
+        document.getElementById('progress').style.width = progress + "%";
+    })
+
     xhr.onreadystatechange = function (e) {
         if (xhr.readyState == 4 && xhr.status == 200) {
             // File uploaded successfully
@@ -57,6 +67,22 @@ function uploadFile(file) {
 
             document.getElementById('img-content').src = url
             document.getElementById('img-content').style.display = "block"
+            document.getElementById('progress').style.display = "none";
+            document.getElementById('remove-upload').style.display = "block"
+            // //* split to check file type
+            // var urlSplit = url.split('.')
+            // var imageType = ['jpg', 'png', 'gif', 'jpeg', 'TIFF', 'EPS', 'AI', 'RAW', 'INDD', 'PDF']
+
+            // // ? if false, the file we receive is video, if true we receive image
+            // var isImg = imageType.includes(urlSplit[length - 1])
+
+            // if (isImg == true) {
+            //     document.getElementById('img-content').src = url
+            //     document.getElementById('img-content').style.display = "block"
+            // } else if (isImg == false) {
+            //     document.getElementById('vid-content').src = url
+            //     document.getElementById('vid-content').style.display = "block"
+            // }
 
             //* Implement another technique----------------------------------------------------------------------------------------------------------------------
             // var img = new Image(); // HTML5 Constructor
