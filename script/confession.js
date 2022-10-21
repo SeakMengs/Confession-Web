@@ -14,7 +14,7 @@ var formatter = Intl.NumberFormat('en', { notation: 'compact'})
 window.onload = async function () {
     generateProfile()
     await generateData()
-    generateComment()
+    // generateComment()
 }
 
 function fetchData() {
@@ -35,6 +35,8 @@ async function generateData() {
         // ? after pushing data to our array we start generate the post
         console.log(postData)
         genertatePost()
+    }).then(() => {
+        generateComment()
     })
 }
 
@@ -129,7 +131,7 @@ function genertatePost() {
             </div>
         `
         }
-    }
+    }     
 }
 
 function generateProfile() {
@@ -286,7 +288,9 @@ async function confess() {
 
     if (confessionContent != "" || imgLink != '') {
         await fetchData().then(function (allData) {
-            currentPostID = parseInt(allData.length + 1)
+            currentPostID = allData[allData.length - 1].impostorId
+            currentPostID = parseInt(currentPostID)
+            currentPostID += 1
             contentData = {
                 text: confessionContent,
                 image: imgLink,
@@ -311,6 +315,7 @@ async function confess() {
         document.getElementById('remove-upload').style.display = "none"
         document.getElementById('img-content').removeAttribute('src')
         generateData()
+        // location.reload()
     }
 }
 
