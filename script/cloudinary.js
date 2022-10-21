@@ -35,12 +35,22 @@ function drop(e) {
 
     var dt = e.dataTransfer;
     var files = dt.files;
-
-    handleFiles(files);
+    var fileCheck = files[0].name.split('.')
+    var fileType = fileCheck[1]
+    var imageType = ['jpg', 'png', 'gif', 'jpeg', 'TIFF', 'EPS', 'AI', 'RAW', 'INDD', 'PDF']
+    // console.log(fileType)
+    var checkIsImg = imageType.includes(fileType)
+    // console.log(checkIsImg)
+    if (checkIsImg == true) {
+        handleFiles(files);
+    } else if (checkIsImg == false) {
+        document.getElementById('upload-warn').style.display = "block"
+    }
 }
 
 // *********** Upload file to Cloudinary ******************** //
 function uploadFile(file) {
+    document.getElementById('upload-warn').style.display = "none"
     var url = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
     var xhr = new XMLHttpRequest();
     var fd = new FormData();

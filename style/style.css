@@ -376,6 +376,13 @@ nav {
     height: auto;
 }
 
+.upload-warn {
+    color: red;
+}
+
+.upload-warn:hover {
+    color: rgb(255, 91, 91);
+}
 
 /** @media query section */
 /* if lesser than 800px we remove search */
@@ -424,6 +431,10 @@ nav {
     .reaction img {
         width: 20px;
     }
+    .reaction-align img:active {
+        width: 15px;
+        height: 15px;
+    }
     .post-text {
         font-size: 12px;
     }
@@ -442,6 +453,9 @@ nav {
     .profile img {
         width: 30px;
         height: 30px;
+    }
+    .upload-warn {
+        font-size: 12px;
     }
 }
 
