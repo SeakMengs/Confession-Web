@@ -1,5 +1,5 @@
 # Confession-Web
-A confessional website where individuals can anonymously publish their opinions
+A confession website where individuals can anonymously publish their opinions
 
 # Features
 -Upload image, gif <br>
