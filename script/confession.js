@@ -284,7 +284,7 @@ async function confess() {
 
     imgLink = document.getElementById('img-content').src
 
-    if (confessionContent != "") {
+    if (confessionContent != "" || imgLink != '') {
         await fetchData().then(function (allData) {
             currentPostID = parseInt(allData.length + 1)
             contentData = {
@@ -309,6 +309,7 @@ async function confess() {
         // document.getElementById('vid-content').src = ''
         // document.getElementById('vid-content').style.display = 'none'
         document.getElementById('remove-upload').style.display = "none"
+        document.getElementById('img-content').removeAttribute('src')
         generateData()
     }
 }
