@@ -112,6 +112,11 @@ nav {
     -o-border-radius: 20px;
 }
 
+.img-content {
+    width: auto;
+    max-height: 250px;
+}
+
 .profile {
     display: flex;
     align-items: center;

@@ -276,17 +276,18 @@ async function confess() {
     var currentPostID
     var contentData = []
     var confessionContent = document.getElementById('confess-box').value
-    var imgLink = ''
+    var imgLink = document.getElementById('img-content').src
     var upvotes = '0'
     var downvotes = '0'
     var shares = '0'
     var pins = '0000'
+
     if (confessionContent != "") {
         await fetchData().then(function (allData) {
             currentPostID = parseInt(allData.length + 1)
             contentData = {
                 text: confessionContent,
-                image: '',
+                image: imgLink,
                 upvote: upvotes,
                 downvote: downvotes,
                 share: shares,
@@ -294,11 +295,15 @@ async function confess() {
                 impostorId: currentPostID
             }
         })
-        // ? wait for content to store in database before render to the client postContent(contentData)
+        //* wait for content to store in database before render to the client postContent(contentData)
         //* https://laracasts.com/discuss/channels/javascript/how-to-properly-use-async-await-with-axios-post-request
         const apiPost = await postContent(contentData)
+
+        //* reset write content
         document.getElementById('confess-box').value = ''
         document.querySelector('.post-container').innerHTML = ''
+        document.getElementById('img-content').src = ''
+        document.getElementById('img-content').style.display = 'none'
         generateData()
     }
 }
@@ -362,3 +367,7 @@ async function reportvote(impID) {
         }
     })
 }
+
+// function uploadImg() {
+//     document.getElementById('upload-input').click()
+// }

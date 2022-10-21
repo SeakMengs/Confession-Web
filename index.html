@@ -20,6 +20,7 @@
     <link rel="icon" type="image/x-icon" href="./asset/profile-red.ico">
     <script src="./script/confession.js" defer></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script src="./script/cloudinary.js" defer></script>
 </head>
 
 <body>
@@ -44,7 +45,7 @@
                 <span>Confession</span>
             </div>
             <div class="content" id="home">
-                <div class="post-write">
+                <div class="post-write" id="post-write">
                     <div class="profile">
                         <img class="prof-logo" src="./asset/profile-pink.png" alt="profile">
                         <!-- <img class="prof-logo" alt="Logo"> -->
@@ -56,9 +57,14 @@
                                 placeholder="Write your confession here"></textarea>
                         </form>
                     </div>
+                    <div class="post-img" id="post-img">
+                        <img class="img-content" id="img-content" alt="Image" style="display: none;">
+                    </div>
                     <div class="write-submit">
                         <div class="write-add-on">
-                            <img class="add-on" src="./asset/image.png" alt="image">
+                            <input type="file" id="fileElem" accept="image/*" style="display:none"
+                                onchange="handleFiles(this.files)">
+                            <img class="add-on fileSelect" id="fileSelect" src="./asset/image.png" alt="image">
                             <img class="add-on" src="./asset/gif.png" alt="image">
                             <img class="add-on" src="./asset/emoji.png" alt="image">
                         </div>
@@ -106,19 +112,12 @@
                             <div class="commented" id="cmt#0">
                                 <div class="cmt-text" id="cmted#1">
                                     <img src="./asset/profile-pink.png" alt="profile">
-                                    <span> Sustainability is an Integral Part of Business Priorities
-                                        According to the study, 77% of organizations in ASEAN are focusing on becoming
-                                        sustainable
-                                        organizations. They are
+                                    <span> Wow nice quote bro
                                     </span>
                                 </div>
                                 <div class="cmt-text" id="cmted#2">
                                     <img src="./asset/profile-green.png" alt="profile">
-                                    <span> Sustainability is an Integral Part of Business Priorities
-                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Error voluptatibus
-                                        reprehenderit at sit tempora nemo architecto ratione temporibus accusamus
-                                        recusandae
-                                        vitae neque, cupiditate animi placeat est! Vero ipsam commodi voluptas?
+                                    <span> Ok bro
                                     </span>
                                 </div>
                             </div>
