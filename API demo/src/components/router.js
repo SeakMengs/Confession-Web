@@ -80,28 +80,28 @@ router.post(`/post`, bodyParser.json(), async (req, res) => {
     }
 })
 
-//Update data
-router.patch("/post/by_id/:impostorId", bodyParser.json(), async(req, res) => {
-    try {
-        const updatePost = await postModel.updateOne(
-            { impostorId: req.params.impostorId },
-            {
-                $set:
-                {
-                    text: req.body.text,
-                    image: req.body.image,
-                    upvote: req.body.upvote,
-                    downvote: req.body.downvote,
-                    share: req.body.share,
-                    comment: req.body.comment
-                }
-            }
-        )
-        res.json(updatePost)
-    } catch (err) {
-        res.json({ message: err.message })
-    }
-})
+// //Update data
+// router.patch("/post/by_id/:impostorId", bodyParser.json(), async(req, res) => {
+//     try {
+//         const updatePost = await postModel.updateOne(
+//             { impostorId: req.params.impostorId },
+//             {
+//                 $set:
+//                 {
+//                     text: req.body.text,
+//                     image: req.body.image,
+//                     upvote: req.body.upvote,
+//                     downvote: req.body.downvote,
+//                     share: req.body.share,
+//                     comment: req.body.comment
+//                 }
+//             }
+//         )
+//         res.json(updatePost)
+//     } catch (err) {
+//         res.json({ message: err.message })
+//     }
+// })
 
 // router.delete(`/post/byID/:impostorId`, async(req, res) => {
 //     try {
