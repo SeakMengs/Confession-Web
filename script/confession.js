@@ -179,6 +179,9 @@ function auto_grow(element) {
     element.style.height = (element.scrollHeight) + "px";
 }
 
+function findPostIndex(impID, allData) {
+    return allData.findIndex((post) => post.impostorId == impID)
+}
 
 async function sendCmt(event) {
     var commentArr = [{}]
@@ -187,14 +190,14 @@ async function sendCmt(event) {
     var ranNum = randomNum(0, 5)
     var impId = event.replace('send#', '')
     var totalCmt = ''
-    // console.log(impId)
     var cmtText = document.getElementById(`content#${impId}`).value
     if (cmtText != "") {
-        // var commentArr = [{}]
         await fetchData().then(function (allData) {
-
+            console.log(allData)
+            const index = findPostIndex(impId, allData)
+            console.log(index)
             // ? get array of comment and then we put object into temp array then push to array of comment and start patching on database
-            commentArr = allData[impId - 1].comment
+            commentArr = allData[index].comment
             // console.log(commentArr)
             textArr = { comments: cmtText }
             commentArr.push(textArr)
@@ -322,16 +325,17 @@ async function confess() {
 async function upvote(impID) {
     impID = impID.replace('up#', '')
     await fetchData().then(function (allData) {
+        const index = findPostIndex(impID, allData)
         try {
-            if (allData[impID - 1].impostorId == impID) {
+            if (allData[index].impostorId == impID) {
                 axios.patch(`https://yatoconfessionapi77.netlify.app/.netlify/functions/api/post/by_id/${impID}`, {
-                    upvote: allData[impID - 1].upvote + 1
+                    upvote: allData[index].upvote + 1
                 }).then((res) => {
                     console.log("Upvoted")
                     // console.log(res)
                     return res
                 })
-                document.getElementById(`upvote#${impID}`).innerHTML = formatter.format(allData[impID - 1].upvote + 1)
+                document.getElementById(`upvote#${impID}`).innerHTML = formatter.format(allData[index].upvote + 1)
             }
         } catch (err) {
             console.log(err)
@@ -342,16 +346,17 @@ async function upvote(impID) {
 async function downvote(impID) {
     impID = impID.replace('down#', '')
     await fetchData().then(function (allData) {
+        const index = findPostIndex(impID, allData)
         try {
-            if (allData[impID - 1].impostorId == impID) {
+            if (allData[index].impostorId == impID) {
                 axios.patch(`https://yatoconfessionapi77.netlify.app/.netlify/functions/api/post/by_id/${impID}`, {
-                    downvote: allData[impID - 1].downvote - 1
+                    downvote: allData[index].downvote - 1
                 }).then((res) => {
                     console.log("Downvoted")
                     // console.log(res)
                     return res
                 })
-                document.getElementById(`downvote#${impID}`).innerHTML = formatter.format(allData[impID - 1].downvote - 1)
+                document.getElementById(`downvote#${impID}`).innerHTML = formatter.format(allData[index].downvote - 1)
             }
         } catch (err) {
             console.log(err)
@@ -362,16 +367,17 @@ async function downvote(impID) {
 async function reportvote(impID) {
     impID = impID.replace('report#', '')
     await fetchData().then(function (allData) {
+        const index = findPostIndex(impID, allData)
         try {
-            if (allData[impID - 1].impostorId == impID) {
+            if (allData[index].impostorId == impID) {
                 axios.patch(`https://yatoconfessionapi77.netlify.app/.netlify/functions/api/post/by_id/${impID}`, {
-                    share: allData[impID - 1].share + 1
+                    share: allData[index].share + 1
                 }).then((res) => {
                     console.log("Reported")
                     // console.log(res)
                     return res
                 })
-                document.getElementById(`share#${impID}`).innerHTML = formatter.format(allData[impID - 1].share + 1)
+                document.getElementById(`share#${impID}`).innerHTML = formatter.format(allData[index].share + 1)
             }
         } catch (err) {
             console.log(err)
